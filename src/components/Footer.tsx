@@ -1,3 +1,5 @@
+import { Instagram, Facebook, Twitter } from 'lucide-react';
+
 function Footer() {
   return (
     <footer className="bg-[hsl(30,15%,25%)] text-[hsl(30,20%,90%)]">
