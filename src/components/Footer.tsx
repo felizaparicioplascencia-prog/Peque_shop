@@ -21,10 +21,10 @@ function Footer() {
 
         <div>
           <h3 className="text-lg font-bold text-white mb-4">Síguenos</h3>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
+          <ul className="space-y-3 text-sm">
+            <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors"><Instagram size={18} className="text-accent" /> Instagram</a></li>
+            <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors"><Facebook size={18} className="text-accent" /> Facebook</a></li>
+            <li><a href="#" className="flex items-center gap-2 hover:text-white transition-colors"><Twitter size={18} className="text-accent" /> Twitter</a></li>
           </ul>
         </div>
       </div>
