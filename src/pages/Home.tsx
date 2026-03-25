@@ -3,11 +3,11 @@ import Footer from "../components/Footer"
 
 function Home() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
 
       <Header />
 
-      <main>
+      <main className="flex-1">
         <h2>Bienvenido a nuestra tienda</h2>
 
         <p>
