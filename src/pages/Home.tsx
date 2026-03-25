@@ -7,7 +7,7 @@ function Home() {
 
       <Header />
 
-      <main>
+      <main className="flex-1">
         <h2>Bienvenido a nuestra tienda</h2>
 
         <p>
