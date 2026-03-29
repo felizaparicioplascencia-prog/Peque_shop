@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img src={logoIcon} alt="PEQUE_SHOP logo" width={32} height={32} className="w-8 h-8" />
-          <span className="text-lg font-bold tracking-tight" style={{ background: 'linear-gradient(135deg, hsl(0 0% 0%), hsl(42 87% 55%), hsl(42 80% 70%), hsl(0 0% 5%))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <span className="text-lg font-bold tracking-tight" style={{ background: 'linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 75%), hsl(0 0% 100%))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             PEQUE_SHOP
           </span>
         </div>
