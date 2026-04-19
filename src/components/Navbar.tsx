@@ -16,7 +16,7 @@ const Navbar = () => {
           <a href="#" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Servicios</a>
           <a href="#" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Nosotros</a>
           <Button variant="hero" size="sm" asChild>
-            <a href="mailto:peque_shop@gmail.com">peque_shop@gmail.com</a>
+            <a href="mailto:peque_shop@gmail.com">Contacto</a>
           </Button>
         </div>
       </div>
