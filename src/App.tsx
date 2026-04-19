@@ -1,26 +1,23 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./Pages/Home.pages";
+import { Layout } from "./Layout/Layout.layout";
+import { Products } from "./Pages/Products.pages";
+import Nosotros from "./Pages/Nosotros";
+import { Registro } from "./Pages/Registro";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index path="/" element={<Home />} />
+          <Route path="/productos" element={<Products />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/registro" element={<Registro />} />
+        </Route>
+      </Routes>
+    </>
+  );
+}
 
 export default App;
