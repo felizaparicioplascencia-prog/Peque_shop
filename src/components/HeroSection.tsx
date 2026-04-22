@@ -13,8 +13,8 @@ const HeroSection = () => {
           Innovación · Excelencia · Resultados
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight tracking-tight">
-          Transformamos ideas en{" "}
-          <span className="text-gold">soluciones reales</span>
+          Donde otros ven fallos,{" "}
+          <span className="text-gold">nosotros vemos la conexión perfecta</span>
         </h1>
         <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
           Somos tu aliado estratégico para llevar tu negocio al siguiente nivel
