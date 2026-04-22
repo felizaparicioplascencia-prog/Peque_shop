@@ -28,6 +28,17 @@ const HeroSection = () => {
             Conocer más
           </Button>
         </div>
+
+        <div className="mt-12 flex justify-center">
+          <div className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-lg px-8 py-6 text-center shadow-lg hover:bg-primary-foreground/15 transition-colors">
+            <h3 className="text-2xl font-bold text-primary-foreground mb-1">
+              Productos
+            </h3>
+            <p className="text-primary-foreground/75 text-sm">
+              Explora nuestro catálogo completo
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
