@@ -1,4 +1,4 @@
-import { Laptop, Monitor, Cpu, HardDrive, MemoryStick, Keyboard, Mouse, Headphones, Gpu, Server, type LucideIcon } from "lucide-react";
+import { Laptop, Monitor, Cpu, HardDrive, MemoryStick, Keyboard, Mouse, Headphones, MonitorPlay, Server, type LucideIcon } from "lucide-react";
 
 export type Categoria = "Laptops" | "Monitores" | "Componentes" | "Periféricos";
 
@@ -29,7 +29,7 @@ export const COMPUTER_PRODUCTS: ComputerProduct[] = [
   // Componentes
   { id: 301, nombre: "Intel Core i9-14900K", categoria: "Componentes", precio: 589, icon: Cpu, descripcion: "24 núcleos, 6.0 GHz boost" },
   { id: 302, nombre: "AMD Ryzen 9 7950X", categoria: "Componentes", precio: 549, icon: Cpu, descripcion: "16 núcleos, AM5, 5.7 GHz" },
-  { id: 303, nombre: "NVIDIA RTX 4080 SUPER", categoria: "Componentes", precio: 999, icon: Gpu, descripcion: "16GB GDDR6X, DLSS 3" },
+  { id: 303, nombre: "NVIDIA RTX 4080 SUPER", categoria: "Componentes", precio: 999, icon: MonitorPlay, descripcion: "16GB GDDR6X, DLSS 3" },
   { id: 304, nombre: "Corsair Vengeance 32GB DDR5", categoria: "Componentes", precio: 149, icon: MemoryStick, descripcion: "6000 MHz, 2x16GB" },
   { id: 305, nombre: "Samsung 990 Pro 2TB NVMe", categoria: "Componentes", precio: 189, icon: HardDrive, descripcion: "PCIe 4.0, 7450 MB/s" },
   { id: 306, nombre: "Servidor Dell PowerEdge", categoria: "Componentes", precio: 3499, icon: Server, descripcion: "Xeon, 64GB ECC, RAID" },
