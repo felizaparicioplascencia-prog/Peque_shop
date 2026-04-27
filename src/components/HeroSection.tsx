@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -21,23 +22,26 @@ const HeroSection = () => {
           con tecnología de vanguardia y estrategias probadas.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="hero" size="lg" className="text-base px-8 py-6">
-            Comenzar ahora
+          <Button variant="hero" size="lg" className="text-base px-8 py-6" asChild>
+            <Link to="/productos">Comenzar ahora</Link>
           </Button>
-          <Button variant="heroOutline" size="lg" className="text-base px-8 py-6">
-            Conocer más
+          <Button variant="heroOutline" size="lg" className="text-base px-8 py-6" asChild>
+            <Link to="/productos">Conocer más</Link>
           </Button>
         </div>
 
         <div className="mt-12 flex justify-center">
-          <div className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-lg px-8 py-6 text-center shadow-lg hover:bg-primary-foreground/15 transition-colors">
+          <Link
+            to="/productos"
+            className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-lg px-8 py-6 text-center shadow-lg hover:bg-primary-foreground/15 transition-colors block"
+          >
             <h3 className="text-2xl font-bold text-primary-foreground mb-1">
               Productos
             </h3>
             <p className="text-primary-foreground/75 text-sm">
               Explora nuestro catálogo completo
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
