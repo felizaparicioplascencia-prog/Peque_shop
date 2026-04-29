@@ -17,10 +17,10 @@ export const CATEGORIAS: Categoria[] = ["Laptops", "Monitores", "Componentes", "
 
 export const COMPUTER_PRODUCTS: ComputerProduct[] = [
   // Laptops
-  { id: 101, nombre: "MacBook Pro 14\" M3", categoria: "Laptops", precio: 1999, icon: Laptop, descripcion: "Chip M3, 16GB RAM, 512GB SSD", imagen: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
-  { id: 102, nombre: "Dell XPS 15", categoria: "Laptops", precio: 1799, icon: Laptop, descripcion: "Intel i7, 32GB RAM, RTX 4060", imagen: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80" },
+  { id: 101, nombre: "MacBook Pro 14\" M3", categoria: "Laptops", precio: 1999, icon: Laptop, descripcion: "Chip M3, 16GB RAM, 512GB SSD", imagen: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80", imagenes: ["https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80", "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80", "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80"] },
+  { id: 102, nombre: "Dell XPS 15", categoria: "Laptops", precio: 1799, icon: Laptop, descripcion: "Intel i7, 32GB RAM, RTX 4060", imagen: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80", imagenes: ["https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80", "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80", "https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=800&q=80"] },
   { id: 103, nombre: "Lenovo ThinkPad X1", categoria: "Laptops", precio: 1599, icon: Laptop, descripcion: "Intel i7, 16GB RAM, 1TB SSD", imagen: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80" },
-  { id: 104, nombre: "ASUS ROG Zephyrus", categoria: "Laptops", precio: 2299, icon: Laptop, descripcion: "Ryzen 9, RTX 4070, 240Hz", imagen: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80" },
+  { id: 104, nombre: "ASUS ROG Zephyrus", categoria: "Laptops", precio: 2299, icon: Laptop, descripcion: "Ryzen 9, RTX 4070, 240Hz", imagen: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80", imagenes: ["https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80", "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80", "https://images.unsplash.com/photo-1542393545-10f5cde2c810?w=800&q=80"] },
 
   // Monitores
   { id: 201, nombre: "LG UltraGear 27\" 165Hz", categoria: "Monitores", precio: 349, icon: Monitor, descripcion: "QHD IPS, 1ms, G-Sync", imagen: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80" },
