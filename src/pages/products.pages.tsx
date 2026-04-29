@@ -88,8 +88,14 @@ const ProductsPage = () => {
                 key={product.id}
                 className="group bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all flex flex-col"
               >
-                <div className="aspect-square bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 rounded-lg mb-4 flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
-                  <Icon className="w-20 h-20 text-primary" strokeWidth={1.5} />
+                <div className="relative aspect-square bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 rounded-lg mb-4 overflow-hidden">
+                  <img
+                    src={product.imagen}
+                    alt={product.nombre}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <Icon className="absolute top-2 right-2 w-6 h-6 text-primary bg-background/80 backdrop-blur rounded-md p-1" strokeWidth={1.75} />
                 </div>
                 <span className="text-xs font-medium text-accent uppercase tracking-wider mb-1">
                   {product.categoria}
