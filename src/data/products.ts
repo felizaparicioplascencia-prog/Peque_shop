@@ -10,6 +10,7 @@ export interface ComputerProduct {
   icon: LucideIcon;
   descripcion: string;
   imagen: string;
+  imagenes?: string[];
 }
 
 export const CATEGORIAS: Categoria[] = ["Laptops", "Monitores", "Componentes", "Periféricos"];
