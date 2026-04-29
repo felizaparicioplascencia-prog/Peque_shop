@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import ProductsPage from "./pages/products.pages";
+import ProductDetail from "./pages/ProductDetail";
 import Carrito from "./pages/Carrito";
 import Checkout from "./pages/Checkout";
 import { AuthProvider } from "./hooks/useAuth";
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/productos" element={<ProtectedRoute><ProductsPage /></ProtectedRoute>} />
+            <Route path="/productos/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
             <Route path="/carrito" element={<ProtectedRoute><Carrito /></ProtectedRoute>} />
             <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
