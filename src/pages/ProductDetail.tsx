@@ -18,6 +18,8 @@ const ProductDetail = () => {
   const [adding, setAdding] = useState(false);
 
   const product = COMPUTER_PRODUCTS.find((p) => p.id === Number(id));
+  const gallery = product ? (product.imagenes && product.imagenes.length > 0 ? product.imagenes : [product.imagen]) : [];
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!product) {
     return (
