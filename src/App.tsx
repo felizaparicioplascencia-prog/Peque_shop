@@ -10,8 +10,11 @@ import ProductsPage from "./pages/products.pages";
 import ProductDetail from "./pages/ProductDetail";
 import Carrito from "./pages/Carrito";
 import Checkout from "./pages/Checkout";
+import AdminLogin from "./pages/AdminLogin";
+import AdminUsers from "./pages/AdminUsers";
 import { AuthProvider } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,8 @@ const App = () => (
             <Route path="/productos/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
             <Route path="/carrito" element={<ProtectedRoute><Carrito /></ProtectedRoute>} />
             <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminRoute><AdminUsers /></AdminRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
