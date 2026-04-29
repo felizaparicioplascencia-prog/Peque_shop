@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
@@ -88,7 +88,7 @@ const ProductsPage = () => {
                 key={product.id}
                 className="group bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all flex flex-col"
               >
-                <div className="relative aspect-square bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 rounded-lg mb-4 overflow-hidden">
+                <Link to={`/productos/${product.id}`} className="block relative aspect-square bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 rounded-lg mb-4 overflow-hidden">
                   <img
                     src={product.imagen}
                     alt={product.nombre}
@@ -96,11 +96,13 @@ const ProductsPage = () => {
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <Icon className="absolute top-2 right-2 w-6 h-6 text-primary bg-background/80 backdrop-blur rounded-md p-1" strokeWidth={1.75} />
-                </div>
+                </Link>
                 <span className="text-xs font-medium text-accent uppercase tracking-wider mb-1">
                   {product.categoria}
                 </span>
-                <h3 className="font-bold text-card-foreground mb-1 line-clamp-2">{product.nombre}</h3>
+                <Link to={`/productos/${product.id}`} className="hover:text-primary transition-colors">
+                  <h3 className="font-bold text-card-foreground mb-1 line-clamp-2">{product.nombre}</h3>
+                </Link>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">{product.descripcion}</p>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-2xl font-bold text-foreground">${product.precio.toLocaleString()}</span>
