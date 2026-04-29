@@ -85,16 +85,43 @@ const ProductDetail = () => {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="relative aspect-square bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 rounded-2xl overflow-hidden border border-border">
-            <img
-              src={product.imagen}
-              alt={product.nombre}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <Icon
-              className="absolute top-4 right-4 w-10 h-10 text-primary bg-background/80 backdrop-blur rounded-lg p-2"
-              strokeWidth={1.75}
-            />
+          <div className="flex flex-col gap-4">
+            <div className="relative aspect-square bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 rounded-2xl overflow-hidden border border-border">
+              <img
+                src={gallery[activeImage]}
+                alt={`${product.nombre} - imagen ${activeImage + 1}`}
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+              />
+              <Icon
+                className="absolute top-4 right-4 w-10 h-10 text-primary bg-background/80 backdrop-blur rounded-lg p-2"
+                strokeWidth={1.75}
+              />
+            </div>
+
+            {gallery.length > 1 && (
+              <div className="flex gap-3 overflow-x-auto pb-1">
+                {gallery.map((src, idx) => (
+                  <button
+                    key={src + idx}
+                    onClick={() => setActiveImage(idx)}
+                    aria-label={`Ver imagen ${idx + 1}`}
+                    aria-current={activeImage === idx}
+                    className={`relative shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                      activeImage === idx
+                        ? "border-primary ring-2 ring-primary/30"
+                        : "border-border hover:border-primary/50 opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    <img
+                      src={src}
+                      alt={`Miniatura ${idx + 1}`}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col">
