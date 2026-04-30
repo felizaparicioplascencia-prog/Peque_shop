@@ -1,6 +1,6 @@
-import { Laptop, Monitor, Cpu, HardDrive, MemoryStick, Keyboard, Mouse, Headphones, MonitorPlay, Server, type LucideIcon } from "lucide-react";
+import { Laptop, Monitor, Cpu, HardDrive, MemoryStick, Keyboard, Mouse, Headphones, MonitorPlay, Server, Camera, Video, Computer, type LucideIcon } from "lucide-react";
 
-export type Categoria = "Laptops" | "Monitores" | "Componentes" | "Periféricos";
+export type Categoria = "Laptops" | "Monitores" | "Componentes" | "Periféricos" | "Cámaras de Acción" | "Computadoras de Escritorio";
 
 export interface ComputerProduct {
   id: number;
@@ -13,7 +13,7 @@ export interface ComputerProduct {
   imagenes?: string[];
 }
 
-export const CATEGORIAS: Categoria[] = ["Laptops", "Monitores", "Componentes", "Periféricos"];
+export const CATEGORIAS: Categoria[] = ["Laptops", "Monitores", "Componentes", "Periféricos", "Cámaras de Acción", "Computadoras de Escritorio"];
 
 export const COMPUTER_PRODUCTS: ComputerProduct[] = [
   // Laptops
@@ -41,4 +41,16 @@ export const COMPUTER_PRODUCTS: ComputerProduct[] = [
   { id: 402, nombre: "Razer DeathAdder V3", categoria: "Periféricos", precio: 89, icon: Mouse, descripcion: "30K DPI, 64g, ergonómico", imagen: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80" },
   { id: 403, nombre: "Sony WH-1000XM5", categoria: "Periféricos", precio: 399, icon: Headphones, descripcion: "Cancelación de ruido líder", imagen: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80" },
   { id: 404, nombre: "Keychron K2 Pro", categoria: "Periféricos", precio: 109, icon: Keyboard, descripcion: "Mecánico, hot-swap, QMK", imagen: "https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=800&q=80" },
+
+  // Cámaras de Acción
+  { id: 501, nombre: "GoPro HERO12 Black", categoria: "Cámaras de Acción", precio: 399, icon: Camera, descripcion: "5.3K60, HyperSmooth 6.0", imagen: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=80" },
+  { id: 502, nombre: "DJI Osmo Action 4", categoria: "Cámaras de Acción", precio: 349, icon: Video, descripcion: "Sensor 1/1.3\", 10-bit D-Log M", imagen: "https://images.unsplash.com/photo-1606986628253-49b0b1d2f9b3?w=800&q=80" },
+  { id: 503, nombre: "Insta360 X3", categoria: "Cámaras de Acción", precio: 449, icon: Camera, descripcion: "360° 5.7K, sumergible 10m", imagen: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80" },
+  { id: 504, nombre: "GoPro HERO11 Mini", categoria: "Cámaras de Acción", precio: 249, icon: Video, descripcion: "Compacta, 5.3K, HyperSmooth", imagen: "https://images.unsplash.com/photo-1625834509490-d5e2eb22da6d?w=800&q=80" },
+
+  // Computadoras de Escritorio
+  { id: 601, nombre: "Apple iMac 24\" M3", categoria: "Computadoras de Escritorio", precio: 1499, icon: Computer, descripcion: "Pantalla Retina 4.5K, M3", imagen: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80" },
+  { id: 602, nombre: "PC Gamer RTX 4070", categoria: "Computadoras de Escritorio", precio: 1899, icon: Computer, descripcion: "Ryzen 7, 32GB, 1TB NVMe", imagen: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80" },
+  { id: 603, nombre: "Mac mini M2 Pro", categoria: "Computadoras de Escritorio", precio: 1299, icon: Computer, descripcion: "M2 Pro, 16GB, 512GB SSD", imagen: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80" },
+  { id: 604, nombre: "HP OMEN 45L", categoria: "Computadoras de Escritorio", precio: 2199, icon: Computer, descripcion: "Intel i9, RTX 4080, líquida", imagen: "https://images.unsplash.com/photo-1591238372338-22d1ef896590?w=800&q=80" },
 ];
