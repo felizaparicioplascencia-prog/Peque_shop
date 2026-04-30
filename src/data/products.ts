@@ -53,4 +53,36 @@ export const COMPUTER_PRODUCTS: ComputerProduct[] = [
   { id: 602, nombre: "PC Gamer RTX 4070", categoria: "Computadoras de Escritorio", precio: 1899, icon: Computer, descripcion: "Ryzen 7, 32GB, 1TB NVMe", imagen: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80" },
   { id: 603, nombre: "Mac mini M2 Pro", categoria: "Computadoras de Escritorio", precio: 1299, icon: Computer, descripcion: "M2 Pro, 16GB, 512GB SSD", imagen: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80" },
   { id: 604, nombre: "HP OMEN 45L", categoria: "Computadoras de Escritorio", precio: 2199, icon: Computer, descripcion: "Intel i9, RTX 4080, líquida", imagen: "https://images.unsplash.com/photo-1591238372338-22d1ef896590?w=800&q=80" },
+
+  // Más Laptops
+  { id: 105, nombre: "MacBook Air 15\" M2", categoria: "Laptops", precio: 1299, icon: Laptop, descripcion: "M2, 8GB RAM, 256GB SSD", imagen: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&q=80" },
+  { id: 106, nombre: "HP Spectre x360", categoria: "Laptops", precio: 1499, icon: Laptop, descripcion: "Convertible, OLED, i7", imagen: "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=800&q=80" },
+  { id: 107, nombre: "Razer Blade 16", categoria: "Laptops", precio: 2799, icon: Laptop, descripcion: "i9, RTX 4080, OLED 240Hz", imagen: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=80" },
+
+  // Más Monitores
+  { id: 205, nombre: "Apple Studio Display", categoria: "Monitores", precio: 1599, icon: Monitor, descripcion: "27\" 5K Retina, P3", imagen: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&q=80" },
+  { id: 206, nombre: "BenQ PD3220U", categoria: "Monitores", precio: 1199, icon: Monitor, descripcion: "32\" 4K, Thunderbolt 3", imagen: "https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=800&q=80" },
+  { id: 207, nombre: "MSI MAG 274QRF QD", categoria: "Monitores", precio: 429, icon: Monitor, descripcion: "27\" QHD 170Hz Quantum Dot", imagen: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=800&q=80" },
+
+  // Más Componentes
+  { id: 307, nombre: "NVIDIA RTX 4090", categoria: "Componentes", precio: 1799, icon: MonitorPlay, descripcion: "24GB GDDR6X, 4K Ultra", imagen: "https://images.unsplash.com/photo-1591489378430-ef2f4c626b35?w=800&q=80" },
+  { id: 308, nombre: "AMD Radeon RX 7900 XTX", categoria: "Componentes", precio: 949, icon: MonitorPlay, descripcion: "24GB GDDR6, RDNA 3", imagen: "https://images.unsplash.com/photo-1587202372616-b43abea06c2a?w=800&q=80" },
+  { id: 309, nombre: "WD Black SN850X 4TB", categoria: "Componentes", precio: 329, icon: HardDrive, descripcion: "PCIe 4.0, 7300 MB/s", imagen: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80" },
+  { id: 310, nombre: "G.Skill Trident Z5 64GB", categoria: "Componentes", precio: 289, icon: MemoryStick, descripcion: "DDR5 6400, 2x32GB RGB", imagen: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80" },
+
+  // Más Periféricos
+  { id: 405, nombre: "Logitech MX Master 3S", categoria: "Periféricos", precio: 99, icon: Mouse, descripcion: "8K DPI, silencioso, USB-C", imagen: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80" },
+  { id: 406, nombre: "Bose QuietComfort Ultra", categoria: "Periféricos", precio: 429, icon: Headphones, descripcion: "ANC, audio espacial", imagen: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80" },
+  { id: 407, nombre: "SteelSeries Apex Pro", categoria: "Periféricos", precio: 199, icon: Keyboard, descripcion: "Switches OmniPoint ajustables", imagen: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80" },
+
+  // Más Cámaras de Acción
+  { id: 505, nombre: "DJI Action 2 Dual-Screen", categoria: "Cámaras de Acción", precio: 399, icon: Camera, descripcion: "Modular, 4K120, magnética", imagen: "https://images.unsplash.com/photo-1606986628253-49b0b1d2f9b3?w=800&q=80" },
+  { id: 506, nombre: "Insta360 Ace Pro", categoria: "Cámaras de Acción", precio: 449, icon: Video, descripcion: "Sensor Leica 1/1.3\", 8K", imagen: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80" },
+  { id: 507, nombre: "Sony RX0 II", categoria: "Cámaras de Acción", precio: 699, icon: Camera, descripcion: "Ultra compacta, 4K HDR", imagen: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=80" },
+
+  // Más Computadoras de Escritorio
+  { id: 605, nombre: "Mac Studio M2 Max", categoria: "Computadoras de Escritorio", precio: 1999, icon: Computer, descripcion: "M2 Max, 32GB, 512GB SSD", imagen: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80" },
+  { id: 606, nombre: "Alienware Aurora R16", categoria: "Computadoras de Escritorio", precio: 2499, icon: Computer, descripcion: "i9-14900F, RTX 4090", imagen: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80" },
+  { id: 607, nombre: "Lenovo Legion Tower 7i", categoria: "Computadoras de Escritorio", precio: 2099, icon: Computer, descripcion: "i9, RTX 4080, 32GB DDR5", imagen: "https://images.unsplash.com/photo-1591238372338-22d1ef896590?w=800&q=80" },
+  { id: 608, nombre: "Mini PC Intel NUC 13", categoria: "Computadoras de Escritorio", precio: 899, icon: Computer, descripcion: "i7, 16GB, compacto", imagen: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80" },
 ];
