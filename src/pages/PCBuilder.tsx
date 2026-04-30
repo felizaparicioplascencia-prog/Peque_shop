@@ -365,6 +365,12 @@ const PCBuilder = () => {
           </div>
         </section>
       </main>
+      <EnrollmentDialog
+        open={!!enrollment}
+        onOpenChange={(o) => !o && setEnrollment(null)}
+        plan={enrollment?.plan ?? null}
+        planLabel={enrollment?.label ?? ""}
+      />
       <Footer />
     </div>
   );
