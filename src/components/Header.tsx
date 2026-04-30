@@ -51,6 +51,7 @@ const Header = () => {
         <nav className="flex items-center gap-2 md:gap-6">
           <Link to="/" className="hidden md:inline text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Inicio</Link>
           <Link to="/productos" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Productos</Link>
+          <Link to="/servicios/armar-pc" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Arma tu PC</Link>
 
           {user && (
             <Link to="/carrito" className="relative text-primary-foreground/70 hover:text-gold transition-colors p-2">
