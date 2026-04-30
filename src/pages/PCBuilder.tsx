@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Cpu, MonitorPlay, MemoryStick, HardDrive, Server, Zap, Box, Fan, Check, ShoppingCart, type LucideIcon } from "lucide-react";
+import { Cpu, MonitorPlay, MemoryStick, HardDrive, Server, Zap, Box, Fan, Check, ShoppingCart, GraduationCap, Clock, Users, Wrench, BookOpen, Award, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type PartCategory =
