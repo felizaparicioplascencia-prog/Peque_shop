@@ -260,6 +260,103 @@ const PCBuilder = () => {
             </Button>
           </aside>
         </div>
+
+        {/* Curso de armado de PC */}
+        <section className="mt-24">
+          <div className="text-center mb-10 max-w-2xl mx-auto">
+            <p className="text-gold uppercase tracking-[0.2em] text-sm font-medium mb-3">Servicio adicional</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Curso de armado de PC</h2>
+            <p className="text-muted-foreground">
+              Aprende paso a paso a ensamblar tu propia computadora con instructores expertos. Teoría, práctica y certificación incluidas.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { icon: BookOpen, title: "Teoría completa", desc: "Conoce cada componente, compatibilidades y especificaciones." },
+              { icon: Wrench, title: "Práctica real", desc: "Arma una PC desde cero con equipos reales en nuestro taller." },
+              { icon: Award, title: "Certificación", desc: "Recibe un diploma avalado al completar el curso." },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="bg-card border border-border rounded-xl p-6">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-gold" />
+                </div>
+                <h3 className="font-bold text-card-foreground mb-2">{title}</h3>
+                <p className="text-sm text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {[
+              {
+                nombre: "Curso Básico",
+                precio: 99,
+                duracion: "8 horas",
+                cupo: "Grupos de 6",
+                temas: ["Identificación de componentes", "Montaje de CPU y RAM", "Instalación de Windows", "Primeros encendidos"],
+                destacado: false,
+              },
+              {
+                nombre: "Curso Intermedio",
+                precio: 199,
+                duracion: "16 horas",
+                cupo: "Grupos de 5",
+                temas: ["Todo lo del básico", "Refrigeración líquida", "Cable management profesional", "Overclocking seguro", "Diagnóstico de fallas"],
+                destacado: true,
+              },
+              {
+                nombre: "Curso Pro",
+                precio: 349,
+                duracion: "32 horas",
+                cupo: "Grupos de 4",
+                temas: ["Todo lo del intermedio", "Builds de alto rendimiento", "Workstations y servidores", "Modding y custom loops", "Asesoría 1 a 1 post-curso"],
+                destacado: false,
+              },
+            ].map((curso) => (
+              <div
+                key={curso.nombre}
+                className={cn(
+                  "bg-card border rounded-xl p-6 flex flex-col relative",
+                  curso.destacado ? "border-gold ring-2 ring-gold/30 shadow-lg" : "border-border"
+                )}
+              >
+                {curso.destacado && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-accent-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    Más popular
+                  </span>
+                )}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <GraduationCap className="w-5 h-5 text-gold" />
+                  </div>
+                  <h3 className="text-xl font-bold text-card-foreground">{curso.nombre}</h3>
+                </div>
+                <div className="mb-4">
+                  <span className="text-4xl font-bold text-foreground">${curso.precio}</span>
+                  <span className="text-muted-foreground text-sm"> / persona</span>
+                </div>
+                <div className="flex gap-4 text-xs text-muted-foreground mb-4 pb-4 border-b border-border">
+                  <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {curso.duracion}</span>
+                  <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {curso.cupo}</span>
+                </div>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {curso.temas.map((t) => (
+                    <li key={t} className="flex items-start gap-2 text-sm text-card-foreground">
+                      <Check className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button variant={curso.destacado ? "hero" : "outline"} asChild className="w-full">
+                  <a href={`mailto:peque_shop@gmail.com?subject=Inscripción ${curso.nombre}`}>
+                    Inscribirme
+                  </a>
+                </Button>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
