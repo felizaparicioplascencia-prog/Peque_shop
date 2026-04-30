@@ -115,6 +115,7 @@ const PCBuilder = () => {
     CATEGORIES.reduce((acc, c) => ({ ...acc, [c.key]: null }), {} as Record<PartCategory, Part | null>)
   );
   const [adding, setAdding] = useState(false);
+  const [enrollment, setEnrollment] = useState<{ plan: CoursePlan; label: string } | null>(null);
   const { user } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
