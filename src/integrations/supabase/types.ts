@@ -47,6 +47,42 @@ export type Database = {
         }
         Relationships: []
       }
+      course_enrollments: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          nombre: string
+          notas: string | null
+          plan: Database["public"]["Enums"]["course_plan"]
+          status: Database["public"]["Enums"]["enrollment_status"]
+          telefono: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          nombre: string
+          notas?: string | null
+          plan: Database["public"]["Enums"]["course_plan"]
+          status?: Database["public"]["Enums"]["enrollment_status"]
+          telefono?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          nombre?: string
+          notas?: string | null
+          plan?: Database["public"]["Enums"]["course_plan"]
+          status?: Database["public"]["Enums"]["enrollment_status"]
+          telefono?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -108,6 +144,8 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      course_plan: "basico" | "intermedio" | "pro"
+      enrollment_status: "pendiente" | "confirmada" | "cancelada"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -236,6 +274,8 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      course_plan: ["basico", "intermedio", "pro"],
+      enrollment_status: ["pendiente", "confirmada", "cancelada"],
     },
   },
 } as const

@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Cpu, MonitorPlay, MemoryStick, HardDrive, Server, Zap, Box, Fan, Check, ShoppingCart, GraduationCap, Clock, Users, Wrench, BookOpen, Award, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import EnrollmentDialog, { type CoursePlan } from "@/components/EnrollmentDialog";
 
 type PartCategory =
   | "Procesador"
@@ -114,6 +115,7 @@ const PCBuilder = () => {
     CATEGORIES.reduce((acc, c) => ({ ...acc, [c.key]: null }), {} as Record<PartCategory, Part | null>)
   );
   const [adding, setAdding] = useState(false);
+  const [enrollment, setEnrollment] = useState<{ plan: CoursePlan; label: string } | null>(null);
   const { user } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -288,8 +290,9 @@ const PCBuilder = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {[
+            {([
               {
+                plan: "basico" as CoursePlan,
                 nombre: "Curso Básico",
                 precio: 99,
                 duracion: "8 horas",
@@ -298,6 +301,7 @@ const PCBuilder = () => {
                 destacado: false,
               },
               {
+                plan: "intermedio" as CoursePlan,
                 nombre: "Curso Intermedio",
                 precio: 199,
                 duracion: "16 horas",
@@ -306,6 +310,7 @@ const PCBuilder = () => {
                 destacado: true,
               },
               {
+                plan: "pro" as CoursePlan,
                 nombre: "Curso Pro",
                 precio: 349,
                 duracion: "32 horas",
@@ -313,7 +318,7 @@ const PCBuilder = () => {
                 temas: ["Todo lo del intermedio", "Builds de alto rendimiento", "Workstations y servidores", "Modding y custom loops", "Asesoría 1 a 1 post-curso"],
                 destacado: false,
               },
-            ].map((curso) => (
+            ]).map((curso) => (
               <div
                 key={curso.nombre}
                 className={cn(
@@ -348,16 +353,24 @@ const PCBuilder = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant={curso.destacado ? "hero" : "outline"} asChild className="w-full">
-                  <a href={`mailto:peque_shop@gmail.com?subject=Inscripción ${curso.nombre}`}>
-                    Inscribirme
-                  </a>
+                <Button
+                  variant={curso.destacado ? "hero" : "outline"}
+                  className="w-full"
+                  onClick={() => setEnrollment({ plan: curso.plan, label: curso.nombre })}
+                >
+                  Inscribirme
                 </Button>
               </div>
             ))}
           </div>
         </section>
       </main>
+      <EnrollmentDialog
+        open={!!enrollment}
+        onOpenChange={(o) => !o && setEnrollment(null)}
+        plan={enrollment?.plan ?? null}
+        planLabel={enrollment?.label ?? ""}
+      />
       <Footer />
     </div>
   );
