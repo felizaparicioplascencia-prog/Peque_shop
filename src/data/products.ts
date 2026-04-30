@@ -1,6 +1,6 @@
-import { Laptop, Monitor, Cpu, HardDrive, MemoryStick, Keyboard, Mouse, Headphones, MonitorPlay, Server, type LucideIcon } from "lucide-react";
+import { Laptop, Monitor, Cpu, HardDrive, MemoryStick, Keyboard, Mouse, Headphones, MonitorPlay, Server, Camera, Video, Computer, type LucideIcon } from "lucide-react";
 
-export type Categoria = "Laptops" | "Monitores" | "Componentes" | "Periféricos";
+export type Categoria = "Laptops" | "Monitores" | "Componentes" | "Periféricos" | "Cámaras de Acción" | "Computadoras de Escritorio";
 
 export interface ComputerProduct {
   id: number;
