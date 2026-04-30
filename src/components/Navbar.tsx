@@ -13,7 +13,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center gap-8">
           <a href="#" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Inicio</a>
-          <a href="#" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Servicios</a>
+          <a href="/servicios/armar-pc" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Arma tu PC</a>
           <a href="#" className="text-primary-foreground/70 hover:text-gold text-sm font-medium transition-colors">Nosotros</a>
           <Button variant="hero" size="sm" asChild>
             <a href="mailto:peque_shop@gmail.com">Contacto</a>
