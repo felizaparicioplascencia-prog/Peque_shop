@@ -13,7 +13,7 @@ export interface ComputerProduct {
   imagenes?: string[];
 }
 
-export const CATEGORIAS: Categoria[] = ["Laptops", "Monitores", "Componentes", "Periféricos"];
+export const CATEGORIAS: Categoria[] = ["Laptops", "Monitores", "Componentes", "Periféricos", "Cámaras de Acción", "Computadoras de Escritorio"];
 
 export const COMPUTER_PRODUCTS: ComputerProduct[] = [
   // Laptops
