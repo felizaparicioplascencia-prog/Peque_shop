@@ -14,7 +14,7 @@ const getBotResponse = (text: string): string => {
   const t = text.toLowerCase().trim();
 
   if (/(hola|buenas|saludos|hey|qué tal|que tal)/.test(t)) {
-    return "¡Hola! 👋 Soy el asistente virtual de PEQUE_SHOP. Puedo ayudarte con dudas sobre cámaras GoPro y computadoras. ¿En qué te ayudo?";
+    return "¡Hola! 👋 Soy Robotic, el asistente virtual de PEQUE_SHOP. Puedo ayudarte con dudas sobre cámaras GoPro y computadoras. ¿En qué te ayudo?";
   }
   if (/(precio|costo|cuanto cuesta|cuánto cuesta|vale|valor)/.test(t)) {
     if (t.includes("gopro") || t.includes("cámara") || t.includes("camara")) {
@@ -66,7 +66,7 @@ const ChatWidget = () => {
     {
       id: 1,
       role: "bot",
-      content: "¡Hola! 👋 Soy el asistente de PEQUE_SHOP. Pregúntame sobre cámaras GoPro o computadoras.",
+      content: "¡Hola! 👋 Soy Robotic, el asistente de PEQUE_SHOP. Pregúntame sobre cámaras GoPro o computadoras.",
     },
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -117,7 +117,7 @@ const ChatWidget = () => {
                 <Bot className="w-4 h-4 text-gold" />
               </div>
               <div>
-                <p className="text-sm font-semibold">Asistente PEQUE_SHOP</p>
+                <p className="text-sm font-semibold">Robotic</p>
                 <p className="text-xs text-primary-foreground/60 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-green-400 inline-block" />
                   En línea
