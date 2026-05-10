@@ -209,6 +209,7 @@ const ChatWidget = () => {
       toast({ title: "Error", description: "Falló la comunicación con Robotic.", variant: "destructive" });
     } finally {
       setIsTyping(false);
+      if (assistantSoFar) persist("assistant", assistantSoFar);
     }
   };
 
