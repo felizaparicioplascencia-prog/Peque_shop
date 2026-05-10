@@ -251,13 +251,25 @@ const ChatWidget = () => {
                 <p className="text-xs text-[hsl(var(--chat-muted))]">Ingeniero en Sistemas · Jalisco</p>
               </div>
             </div>
-            <button
-              onClick={() => setOpen(false)}
-              aria-label="Cerrar chat"
-              className="text-[hsl(var(--chat-muted))] hover:text-[hsl(var(--chat-orange))] transition-colors p-1.5 rounded-lg hover:bg-[hsl(var(--chat-surface-2))]"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-1">
+              {user && messages.length > 1 && (
+                <button
+                  onClick={clearHistory}
+                  aria-label="Borrar historial"
+                  title="Borrar historial"
+                  className="text-[hsl(var(--chat-muted))] hover:text-[hsl(var(--chat-orange))] transition-colors p-1.5 rounded-lg hover:bg-[hsl(var(--chat-surface-2))]"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Cerrar chat"
+                className="text-[hsl(var(--chat-muted))] hover:text-[hsl(var(--chat-orange))] transition-colors p-1.5 rounded-lg hover:bg-[hsl(var(--chat-surface-2))]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Messages */}
