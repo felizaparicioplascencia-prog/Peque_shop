@@ -1,16 +1,25 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, Trash2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { COMPUTER_PRODUCTS } from "@/data/products";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 interface Message {
   id: number;
   role: "user" | "assistant";
   content: string;
 }
+
+const WELCOME: Message = {
+  id: 1,
+  role: "assistant",
+  content:
+    "¡Qué tal! 👋 Soy **Robotic**, tu Ingeniero en Sistemas de PEQUE_SHOP (Jalisco, MX).\n\nPuedo ayudarte con:\n- 🖥️ Recomendaciones de PCs (Gaming, Oficina, Edición)\n- 📸 Cámaras GoPro y de acción\n- 🔧 Diagnóstico de problemas de hardware\n\n¿En qué te ayudo hoy?",
+};
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat-ia`;
 
