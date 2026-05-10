@@ -113,6 +113,7 @@ const ChatWidget = () => {
     setIsTyping(true);
     persist("user", text);
 
+    let assistantSoFar = "";
     try {
       const resp = await fetch(CHAT_URL, {
         method: "POST",
