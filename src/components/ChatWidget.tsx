@@ -1,16 +1,25 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, Trash2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { COMPUTER_PRODUCTS } from "@/data/products";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 interface Message {
   id: number;
   role: "user" | "assistant";
   content: string;
 }
+
+const WELCOME: Message = {
+  id: 1,
+  role: "assistant",
+  content:
+    "¡Qué tal! 👋 Soy **Robotic**, tu Ingeniero en Sistemas de PEQUE_SHOP (Jalisco, MX).\n\nPuedo ayudarte con:\n- 🖥️ Recomendaciones de PCs (Gaming, Oficina, Edición)\n- 📸 Cámaras GoPro y de acción\n- 🔧 Diagnóstico de problemas de hardware\n\n¿En qué te ayudo hoy?",
+};
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat-ia`;
 
@@ -23,24 +32,74 @@ const buildCatalog = () =>
   }));
 
 const ChatWidget = () => {
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      role: "assistant",
-      content:
-        "¡Qué tal! 👋 Soy **Robotic**, tu Ingeniero en Sistemas de PEQUE_SHOP (Jalisco, MX).\n\nPuedo ayudarte con:\n- 🖥️ Recomendaciones de PCs (Gaming, Oficina, Edición)\n- 📸 Cámaras GoPro y de acción\n- 🔧 Diagnóstico de problemas de hardware\n\n¿En qué te ayudo hoy?",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      if (!user) {
+        setMessages([WELCOME]);
+        return;
+      }
+      const { data, error } = await supabase
+        .from("chat_messages")
+        .select("id, role, content, created_at")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: true });
+      if (cancelled) return;
+      if (error) {
+        console.error("Error cargando historial:", error);
+        setMessages([WELCOME]);
+        return;
+      }
+      if (!data || data.length === 0) {
+        setMessages([WELCOME]);
+      } else {
+        setMessages(
+          data.map((m, i) => ({
+            id: i + 1,
+            role: m.role as "user" | "assistant",
+            content: m.content,
+          }))
+        );
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, open, isTyping]);
+
+  const persist = async (role: "user" | "assistant", content: string) => {
+    if (!user) return;
+    const { error } = await supabase
+      .from("chat_messages")
+      .insert({ user_id: user.id, role, content });
+    if (error) console.error("Error guardando mensaje:", error);
+  };
+
+  const clearHistory = async () => {
+    if (user) {
+      const { error } = await supabase.from("chat_messages").delete().eq("user_id", user.id);
+      if (error) {
+        toast({ title: "Error", description: "No pude borrar el historial.", variant: "destructive" });
+        return;
+      }
+    }
+    setMessages([WELCOME]);
+    toast({ title: "Historial borrado" });
+  };
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +111,9 @@ const ChatWidget = () => {
     setMessages(history);
     setInput("");
     setIsTyping(true);
+    persist("user", text);
 
+    let assistantSoFar = "";
     try {
       const resp = await fetch(CHAT_URL, {
         method: "POST",
@@ -81,7 +142,6 @@ const ChatWidget = () => {
       const reader = resp.body.getReader();
       const decoder = new TextDecoder();
       let textBuffer = "";
-      let assistantSoFar = "";
       const assistantId = Date.now() + 1;
       let createdAssistant = false;
       let streamDone = false;
@@ -149,6 +209,7 @@ const ChatWidget = () => {
       toast({ title: "Error", description: "Falló la comunicación con Robotic.", variant: "destructive" });
     } finally {
       setIsTyping(false);
+      if (assistantSoFar) persist("assistant", assistantSoFar);
     }
   };
 
@@ -190,13 +251,25 @@ const ChatWidget = () => {
                 <p className="text-xs text-[hsl(var(--chat-muted))]">Ingeniero en Sistemas · Jalisco</p>
               </div>
             </div>
-            <button
-              onClick={() => setOpen(false)}
-              aria-label="Cerrar chat"
-              className="text-[hsl(var(--chat-muted))] hover:text-[hsl(var(--chat-orange))] transition-colors p-1.5 rounded-lg hover:bg-[hsl(var(--chat-surface-2))]"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-1">
+              {user && messages.length > 1 && (
+                <button
+                  onClick={clearHistory}
+                  aria-label="Borrar historial"
+                  title="Borrar historial"
+                  className="text-[hsl(var(--chat-muted))] hover:text-[hsl(var(--chat-orange))] transition-colors p-1.5 rounded-lg hover:bg-[hsl(var(--chat-surface-2))]"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Cerrar chat"
+                className="text-[hsl(var(--chat-muted))] hover:text-[hsl(var(--chat-orange))] transition-colors p-1.5 rounded-lg hover:bg-[hsl(var(--chat-surface-2))]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Messages */}
