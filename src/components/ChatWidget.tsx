@@ -32,24 +32,74 @@ const buildCatalog = () =>
   }));
 
 const ChatWidget = () => {
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      role: "assistant",
-      content:
-        "¡Qué tal! 👋 Soy **Robotic**, tu Ingeniero en Sistemas de PEQUE_SHOP (Jalisco, MX).\n\nPuedo ayudarte con:\n- 🖥️ Recomendaciones de PCs (Gaming, Oficina, Edición)\n- 📸 Cámaras GoPro y de acción\n- 🔧 Diagnóstico de problemas de hardware\n\n¿En qué te ayudo hoy?",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      if (!user) {
+        setMessages([WELCOME]);
+        return;
+      }
+      const { data, error } = await supabase
+        .from("chat_messages")
+        .select("id, role, content, created_at")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: true });
+      if (cancelled) return;
+      if (error) {
+        console.error("Error cargando historial:", error);
+        setMessages([WELCOME]);
+        return;
+      }
+      if (!data || data.length === 0) {
+        setMessages([WELCOME]);
+      } else {
+        setMessages(
+          data.map((m, i) => ({
+            id: i + 1,
+            role: m.role as "user" | "assistant",
+            content: m.content,
+          }))
+        );
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, open, isTyping]);
+
+  const persist = async (role: "user" | "assistant", content: string) => {
+    if (!user) return;
+    const { error } = await supabase
+      .from("chat_messages")
+      .insert({ user_id: user.id, role, content });
+    if (error) console.error("Error guardando mensaje:", error);
+  };
+
+  const clearHistory = async () => {
+    if (user) {
+      const { error } = await supabase.from("chat_messages").delete().eq("user_id", user.id);
+      if (error) {
+        toast({ title: "Error", description: "No pude borrar el historial.", variant: "destructive" });
+        return;
+      }
+    }
+    setMessages([WELCOME]);
+    toast({ title: "Historial borrado" });
+  };
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,6 +111,7 @@ const ChatWidget = () => {
     setMessages(history);
     setInput("");
     setIsTyping(true);
+    persist("user", text);
 
     try {
       const resp = await fetch(CHAT_URL, {
