@@ -142,7 +142,6 @@ const ChatWidget = () => {
       const reader = resp.body.getReader();
       const decoder = new TextDecoder();
       let textBuffer = "";
-      let assistantSoFar = "";
       const assistantId = Date.now() + 1;
       let createdAssistant = false;
       let streamDone = false;
